@@ -7,14 +7,14 @@ import anorm.SqlParser._
 
 case class Mydata (
   name: String,
-  mail: String,
-  tel:  String
+  message: String,
+  createdAt:  String
 ) {
 
   def addData {
     DB.withConnection { implicit c =>
-      val id: Int = SQL("INSERT INTO mydata (name,mail,tel) VALUES ( {name}, {mail}, {tel}) ") .
-      on ( 'name -> this.name, 'mail -> this.mail, 'tel -> this.tel) .executeUpdate()
+      val id: Int = SQL("INSERT INTO mydata (name,message,createdAt) VALUES ( {name}, {message}, {createdAt}) ") .
+      on ( 'name -> this.name, 'message -> this.message, 'createdAt -> this.createdAt) .executeUpdate()
     }
   }
 }
@@ -22,9 +22,9 @@ case class Mydata (
 object Mydata {
   val data = {
     get[String]("name") ~
-    get[String]("mail") ~
-    get[String]("tel") map {
-      case name ~ mail ~ tel => Mydata(name, mail, tel)
+    get[String]("message") ~
+    get[String]("createdAt") map {
+      case name ~ message ~ createdAt => Mydata(name, message, createdAt)
     }
   }
 

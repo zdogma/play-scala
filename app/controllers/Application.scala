@@ -12,8 +12,8 @@ object Application extends Controller {
   val form1 = Form(
     mapping(
       "name" -> text,
-      "mail" -> text,
-      "tel" -> text
+      "message" -> text,
+      "createdAt" -> text
     ) (Mydata.apply) (Mydata.unapply)
   )
 
