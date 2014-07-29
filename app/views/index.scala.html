@@ -1,4 +1,4 @@
-@(title: String, message: String, myForm: Form[Application.MyFormData])
+@(title: String, message: String, myForm: Form[Mydata], data:List[Mydata])
 
 @main(title) {
     <h1>@title</h1>
@@ -6,6 +6,25 @@
     @helper.form(action = routes.Application.sendform) {
         @helper.inputText(myForm("name"))
         @helper.inputText(myForm("mail"))
+        @helper.inputText(myForm("tel"))
         <input type="submit">
+    }
+    <hr>
+    @if(data != null) {
+        <p>MyData List</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Mail</th>
+                <th>Tel</th>
+            </tr>
+            @for(data:Mydata <- data) {
+                <tr>
+                    <td>@data.name</td>
+                    <td>@data.mail</td>
+                    <td>@data.tel</td>
+                </tr>
+            }
+        </table>
     }
 }

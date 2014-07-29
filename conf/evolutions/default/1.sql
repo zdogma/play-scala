@@ -1,10 +1,9 @@
 # --- !Ups
-  create table User (
-      id int(10) not null auto_increment, 
-      name varchar(100),
-      email varchar(100),
-      password varchar(100), 
-      createDate timestamp default current_timestamp(),
+  create table mydata (
+    id int(10) not null auto_increment, 
+    name varchar(100),
+    mail varchar(100),
+    tel  varchar(50),
     primary key(id));
 # --- !Downs
-      drop table User;
+  drop table mydata;
